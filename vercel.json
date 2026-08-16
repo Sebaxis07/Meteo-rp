@@ -1,0 +1,18 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron",
+      "schedule": "*/15 * * * *"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/send_email",
+      "destination": "/api/send_email.py"
+    },
+    {
+      "source": "/api/cron",
+      "destination": "/api/cron.py"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg-main: #070B14;
+    --color-bg-card: #0F172A;
+    --color-border-card: #1E293B;
+    --color-led-cyan: #00F0FF;
+    --color-led-blue: #0066FF;
+  }
+  
+  body {
+    background-color: var(--color-bg-main);
+    color: #F8FAFC;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0B1120;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00F0FF;
+}
+
+/* Glassmorphism & Corporate Card Styles */
+.card-corporate {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(11, 17, 32, 0.98) 100%);
+  border: 1px solid rgba(51, 65, 85, 0.7);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+}
+
+.card-corporate-hover {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-corporate-hover:hover {
+  border-color: rgba(0, 240, 255, 0.4);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.led-border-glow {
+  position: relative;
+}
+.led-border-glow::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(90deg, #00F0FF, #0066FF);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+.led-border-glow:hover::after {
+  opacity: 0.8;
+}
+
+/* LED Cyan Accent Utilities */
+.text-led-glow {
+  color: #00F0FF;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+}
+
+.bg-led-badge {
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: #00F0FF;
+}
+
+/* Pulse Glow Animation */
+@keyframes ledPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.96); }
+}
+
+.animate-led-pulse {
+  animation: ledPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Leaflet dark theme override */
+.leaflet-container {
+  background: #0B1120 !important;
+  font-family: inherit;
+}
+.leaflet-popup-content-wrapper {
+  background: #0F172A !important;
+  color: #F8FAFC !important;
+  border: 1px solid #00F0FF;
+  border-radius: 8px !important;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2) !important;
+}
+.leaflet-popup-tip {
+  background: #0F172A !important;
+}
