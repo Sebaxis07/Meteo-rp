@@ -1,40 +1,18 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    },
-    {
-      "src": "api/*.py",
-      "use": "@vercel/python"
-    }
-  ],
   "crons": [
     {
       "path": "/api/cron",
       "schedule": "0 8 * * *"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/send_email",
-      "dest": "/api/send_email.py"
+      "source": "/api/send_email",
+      "destination": "/api/send_email.py"
     },
     {
-      "src": "/api/cron",
-      "dest": "/api/cron.py"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/api/cron",
+      "destination": "/api/cron.py"
     }
   ]
 }
